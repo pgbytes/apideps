@@ -9,6 +9,14 @@ The output will be a folder structure with copied files as defined by the `targe
 
 This tool is under active development and at a very early stage. 
 
+## Install
+
+On a system with Go installed and GO Modules turned on:
+
+```
+go get -u github.com/panshul007/apideps
+```
+
 ## Config
 
 The tool reads the api dependencies from the config yaml file. (Default: `apideps.yaml` in the execution folder)
@@ -33,6 +41,11 @@ Where:
 - tag -> the tag name of repo from which the API folder is to be extracted
 - targetpath -> the folder path to which the `repofolder` will be copied recursively. eg: `api/service1/v1`
     
+## Usage
+
+```
+apideps --help
+```
 
 ## In memory FS options:
 * https://github.com/spf13/afero
