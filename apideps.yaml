@@ -1,0 +1,13 @@
+dependencies:
+  dependency1:
+    repo: ""
+    repofolder: ""
+    commit: ""
+    tag: ""
+    targetpath: ""
+  dependency2:
+    repo: ""
+    repofolder: ""
+    commit: ""
+    tag: ""
+    targetpath: ""
