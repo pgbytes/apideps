@@ -64,12 +64,13 @@ func (d *FileOps) copyFolderPath(commit *object.Tree, srcFolderPath string, targ
 			if err != nil {
 				return err
 			}
-		}
-		// copy file
-		dstFilePath := filepath.Join(dstFolder, filepath.Base(file.Name))
-		err = d.copyFileObject(file, dstFilePath)
-		if err != nil {
-			return fmt.Errorf("error while copying file path: %s, base name: %s to: %s, error: %w", file.Name, filepath.Base(file.Name), dstFilePath, err)
+		} else {
+			// copy file
+			dstFilePath := filepath.Join(dstFolder, filepath.Base(file.Name))
+			err = d.copyFileObject(file, dstFilePath)
+			if err != nil {
+				return fmt.Errorf("error while copying file path: %s, base name: %s to: %s, error: %w", file.Name, filepath.Base(file.Name), dstFilePath, err)
+			}
 		}
 	}
 	return nil
