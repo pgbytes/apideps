@@ -9,6 +9,7 @@ import (
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"
+	"github.com/go-git/go-git/v5/plumbing/transport/ssh"
 	"github.com/go-git/go-git/v5/storage/memory"
 	"github.com/panshul007/apideps/config"
 	"github.com/panshul007/apideps/logger"
@@ -84,9 +85,14 @@ func (d *DepLoader) cloneRepo(repoPath string, fs billy.Filesystem) (*git.Reposi
 	}
 	d.log.Infof("cloning repo: %s", repoPath)
 	store := memory.NewStorage()
+	agent, err := ssh.NewSSHAgentAuth("bitbucket")
+	if err != nil {
+		return nil, fmt.Errorf("error while getting ssh agent for clone, error: %w", err)
+	}
 	repo, err := git.Clone(store, fs, &git.CloneOptions{
 		URL:      repoPath,
 		Progress: os.Stdout,
+		Auth:     agent,
 	})
 	if err != nil {
 		return nil, err
