@@ -85,7 +85,7 @@ func (d *DepLoader) cloneRepo(repoPath string, fs billy.Filesystem) (*git.Reposi
 	}
 	d.log.Infof("cloning repo: %s", repoPath)
 	store := memory.NewStorage()
-	agent, err := ssh.NewSSHAgentAuth("bitbucket")
+	agent, err := ssh.NewSSHAgentAuth("bitbucket-pipelines")
 	if err != nil {
 		return nil, fmt.Errorf("error while getting ssh agent for clone, error: %w", err)
 	}
