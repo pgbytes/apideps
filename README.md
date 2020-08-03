@@ -51,3 +51,7 @@ apideps --help
 * https://github.com/spf13/afero
 * https://github.com/go-git/go-billy 
     * https://pkg.go.dev/gopkg.in/src-d/go-billy.v4/memfs?tab=doc
+
+## Credits
+
+* This tool uses [go-git](https://github.com/go-git/go-git) internally for all git operations.
